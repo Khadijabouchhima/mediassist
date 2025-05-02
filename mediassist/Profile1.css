@@ -1,0 +1,526 @@
+/* Added to fix scrolling issue on Profil.php */
+html, body {
+  height: auto !important;
+  overflow-y: auto !important;
+}
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 150px; /* To offset fixed header */
+}
+.header {
+    overflow: hidden;
+    background-color: #000000;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+  }
+  
+.header a {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    line-height: 25px;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+  }
+  
+.header a:hover {
+    color: #ffedd3;
+    border-bottom: 2px solid #ffedd3;;
+}
+  
+.header-left {
+    float: left;
+}
+  
+.header-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+.logo-img {
+    height: 135px;
+    width: auto;
+}
+  
+@media screen and (max-width: 600px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+}
+  
+.header-left {
+      float: none;
+    }
+  
+    .header-logo {
+      position: static;
+      transform: none;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+
+.profile-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-header h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.edit-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.error-message {
+    background-color: #cc0000;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-card {
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #222222;
+}
+
+.profile-pic-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+}
+
+.change-pic-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 8px 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.change-pic-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.user-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.user-basic-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    color: #ddd;
+}
+
+.info-label {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.medical-info-grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.medical-info-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.medical-info-col h4 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.allergies-list,
+.conditions-list {
+    list-style: none;
+    padding-left: 0;
+    color: #ccc;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-section .info-item {
+    color: #ddd;
+}
+
+.contact-section .info-label {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto; /* Allow modal to scroll if content is too tall */
+    padding: 20px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #121212;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh; /* Limit height and enable scrolling */
+    overflow-y: auto; /* Enable scrolling inside modal */
+}
+.edit-form .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.edit-form .form-group {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 15px;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #ddd;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="date"],
+.edit-form input[type="number"],
+.edit-form select,
+.edit-form textarea,
+.edit-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444444;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: #eee;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.edit-form input[type="text"]:focus,
+.edit-form input[type="date"]:focus,
+.edit-form input[type="number"]:focus,
+.edit-form select:focus,
+.edit-form textarea:focus,
+.edit-form input[type="file"]:focus {
+    border-color: #ffffff;
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cancel-btn,
+.save-btn {
+    padding: 12px 25px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn {
+    background-color: #444444;
+    color: #eee;
+}
+
+.cancel-btn:hover {
+    background-color: #666666;
+}
+
+.save-btn {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.save-btn:hover {
+    background-color: #e0e0e0;
+}
+
+footer {
+    background-color: #121212;
+    color: #888888;
+    padding: 50px 20px 30px;
+    border-top: 1px solid rgba(255, 237, 211, 0.1);
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: #ffedd3;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.footer-section p, .footer-section li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ffedd3;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffedd3;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .user-basic-info {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .medical-info-grid {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .edit-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+ /* Footer */
+ .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: left;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: #ffedd3;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.footer-section p, .footer-section li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ffedd3;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffedd3;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 237, 211, 0.1);
+    color: #ccc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+        margin-bottom: 15px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
