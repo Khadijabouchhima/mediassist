@@ -1,0 +1,427 @@
+:root {
+    --black: #000000;
+    --dark-gray: #121212;
+    --medium-gray: #1a1a1a;
+    --cream: #f5f5f0;
+    --light-cream: #fffcf5;
+    --accent: #e8e8d8;
+    --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --border-radius: 12px;
+}
+a {
+    text-decoration: none;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--cream);
+    background-color: var(--black);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+.header {
+    overflow: hidden;
+    background-color: #000000;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  
+  }
+  
+  .header a {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    line-height: 25px;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .header a:hover {
+    color: #ffedd3;
+    border-bottom: 2px solid #ffedd3;;
+  }
+  
+  .header-left {
+    float: left;
+  }
+  
+  .header-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .logo-img {
+    height: 135px;
+    width: auto;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+  }
+  
+  .header-left {
+      float: none;
+    }
+  
+    .header-logo {
+      position: static;
+      transform: none;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+
+main {
+    padding: 150px 30px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2, h3 {
+    color: var(--cream);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: var(--accent);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: 40px 0 20px;
+}
+
+form {
+    background-color: var(--dark-gray);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition);
+}
+
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--cream);
+    font-size: 0.95rem;
+    transition: all 0.3s var(--transition);
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 2px rgba(232, 232, 216, 0.1);
+}
+/*button {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  color: var(--cream);
+  border: 0.7px solid rgba(255,255,255,0.3);
+  font-size: 0.875rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.6s var(--transition);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  border-color: var(--cream);
+  background: rgba(255,255,255,0.02);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 237, 211, 0.2), 
+    transparent);
+  transition: 0.5s var(--transition);
+}
+
+button:hover::before { left: 100%; }*/
+form button {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    color: var(--cream);
+    border: 0.7px solid rgba(255,255,255,0.3);
+    font-size: 0.875rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.6s var(--transition);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+form button:hover {
+    border-color: var(--cream);
+    background: rgba(255,255,255,0.02);
+}
+form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 237, 211, 0.2), 
+      transparent);
+    transition: 0.5s var(--transition);
+}
+form button:hover::before{
+    left: 100%;
+}
+  
+  .prescriptions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+    display: grid;
+    gap: 1px;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .prescriptions-list li {
+    background-color: var(--deep-black);
+    padding: 1.5rem;
+    transition: all 0.35s var(--transition);
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+  
+  .prescriptions-list li:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .prescriptions-list li:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom: none;
+  }
+  
+  .prescriptions-list li:hover {
+    background-color: var(--pure-black);
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 0 var(--crisp-white);
+  }
+  
+  .prescriptions-list a {
+    color: var(--soft-white);
+    text-decoration: none;
+    display: block;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    position: relative;
+    padding-left: 1rem;
+  }
+  
+  .prescriptions-list a::before {
+    content: "→";
+    position: absolute;
+    left: -0.5rem;
+    opacity: 0;
+    transition: all 0.35s var(--transition);
+    color: var(--crisp-white);
+  }
+  
+  .prescriptions-list li:hover a::before {
+    left: 0;
+    opacity: 1;
+  }
+  
+  .prescriptions-list a:hover {
+    color: var(--crisp-white);
+  }
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-section h3 {
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-section p, 
+.footer-section li {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s var(--transition);
+}
+
+.footer-section a:hover {
+    color: var(--accent);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: var(--cream);
+    font-size: 1.2rem;
+    transition: all 0.3s var(--transition);
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .header-logo {
+        position: static;
+        transform: none;
+        margin: 15px 0;
+        order: -1;
+    }
+    
+    .logo-img {
+        height: 80px;
+    }
+    
+    main {
+        padding: 120px 20px 40px;
+    }
+    
+    form, .medicaments-list {
+        padding: 25px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    main {
+        padding: 100px 15px 30px;
+    }
+    
+    form, .medicaments-list {
+        padding: 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+}
